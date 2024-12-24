@@ -1,4 +1,5 @@
 from tkinter import *
+import random
 import time
 
 root=Tk()
@@ -16,6 +17,8 @@ burger=StringVar()
 pizza=StringVar()
 cheese_burger=StringVar()
 drinks=StringVar()
+total_bill=StringVar()
+cost=StringVar()
 
 Tops = Frame(root, width = 1600,height=50, relief=SUNKEN) 
 Tops.pack(side=TOP)
@@ -112,6 +115,43 @@ def price():
     lbl_info=Label(price_window, font=font, fg=fg, text="35")
     lbl_info.grid(row=6,column=3)
 
+    price_window.mainloop()
+
+def total():
+    x=random.randint(1,5000)
+    randomx=str(x)
+    ref.set(randomx)
+    cof=float(fries.get())
+    col=float(lunch.get())
+    cob=float(burger.get())
+    cop=float(pizza.get())
+    cocb=float(cheese_burger.get())
+    cod=float(drinks.get())
+    cost_of_fries=cof*25
+    cost_of_lunch=col*40
+    cost_of_burger=cob*35
+    cost_of_pizza=cop*50
+    cost_of_cheese_burger=cocb*30
+    cost_of_drinks=cod*35
+    cost_of_meal=("$",str("%.2f"%(cost_fries+cost_of_lunch+cost_of_burger+cost_of_pizza+cost_of_cheese_burger+cost_of_drinks)))
+    pay_tax=((cost_fries+cost_of_lunch+cost_of_burger+cost_of_pizza+cost_of_cheese_burger+cost_of_drinks)*0.33)
+    total_cost=(cost_fries+cost_of_lunch+cost_of_burger+cost_of_pizza+cost_of_cheese_burger+cost_of_drinks)
+    overall_cost="$",str(pay_tax+total_cost)
+    cost.set(cost_of_meal)
+    total_bill.set(overall_cost)
+def reset():
+    ref.set('')
+    fries.set('')
+    lunch.set('')
+    burger.set('')
+    pizza.set('')
+    cheese_burger.set('')
+    drinks.set('')
+    total_bill.set('')
+    cost.set('')
+def exit():
+    root.destroy()
+    
 btn_price=Button(f1, font=font, fg=fg2, bd=10, text="Price", width=10, bg='powder blue', command=price)
 btn_price.grid(row=7,column=0)
 
